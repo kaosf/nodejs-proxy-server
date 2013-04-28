@@ -1,12 +1,16 @@
-http = require 'http'
 httpProxy = require 'http-proxy'
+apiPath = '/api/v1'
 
-httpProxy.createServer(9000, 'localhost').listen 8000
-
-http.createServer((req, res) ->
-  res.writeHead 200,
-    'Content-Type': 'text/plain'
-  res.write "request successfully proxied!\n#{JSON.stringify req.headers, true, 2}"
-  res.end()
+httpProxy.createServer((req, res, proxy) ->
+  if req.url.indexOf apiPath is 0
+    proxy.proxyRequest req, res,
+      host: 'localhost'
+      port: 3000
+  else
+    proxy.proxyRequest req, res,
+      host: 'localhost'
+      port: 9000
   return
-).listen 9000
+).listen 8000
+
+console.log 'Starting Server at http://localhost:8000/'
