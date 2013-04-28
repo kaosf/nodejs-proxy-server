@@ -12,6 +12,9 @@
   },
   "author": "ka",
   "license": "MIT",
+  "dependencies": {
+    "http-proxy": "0.10.2"
+  },
   "devDependencies": {
     "grunt": "0.4.1",
     "grunt-contrib-coffee": "0.7.0"
