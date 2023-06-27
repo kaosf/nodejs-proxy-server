@@ -13,6 +13,6 @@
   "author": "ka",
   "license": "MIT",
   "dependencies": {
-    "http-proxy": "0.10.2"
+    "http-proxy": "1.18.1"
   }
 }
